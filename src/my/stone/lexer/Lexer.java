@@ -21,9 +21,9 @@ public class Lexer {
     private LineNumberReader reader;
 
 
-    public Lexer(Reader reader){
+    public Lexer(Reader inputReader){
         hasMore = true;
-        reader = new LineNumberReader(reader);
+        reader = new LineNumberReader(inputReader);
     }
 
     public Token read() throws ParseException {
@@ -34,7 +34,7 @@ public class Lexer {
     }
 
     private boolean fillQueue(int index) throws ParseException{
-        while (index>queue.size()){
+        while (index>=queue.size()){
             if (hasMore)
                 readLine();
             else
