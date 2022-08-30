@@ -33,6 +33,13 @@ public class Lexer {
             return Token.EOF;
     }
 
+    public Token peek(int i) throws ParseException {
+        if (fillQueue(i))
+            return queue.get(i);
+        else
+            return Token.EOF;
+    }
+
     private boolean fillQueue(int index) throws ParseException{
         while (index>=queue.size()){
             if (hasMore)

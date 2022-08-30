@@ -1,4 +1,4 @@
-package my.stone.ast;
+package my.stone.parser.ast;
 
 import my.stone.Token;
 
