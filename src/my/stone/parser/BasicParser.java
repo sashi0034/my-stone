@@ -9,12 +9,12 @@ import my.stone.ParseException;
 import my.stone.Token;
 import my.stone.lexer.Lexer;
 import my.stone.parser.ast.*;
-import my.stone.parser.Parser.Operators;
+import my.stone.parser.element.Operators;
 
 
 public class BasicParser {
     HashSet<String> reserved = new HashSet<String>();
-    Operators operators = new Parser.Operators();
+    Operators operators = new Operators();
     Parser expr0 = rule();
     Parser primary = rule(PrimaryExpr.class)
             .or(rule().sep("(").ast(expr0).sep(")"),
