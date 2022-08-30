@@ -1,8 +1,8 @@
 package my.stone.parser.ast;
 import java.util.List;
 
-public class IfStatement extends ASTList {
-    public IfStatement(List<ASTree> c) { super(c); }
+public class IfStmt extends ASTList {
+    public IfStmt(List<ASTree> c) { super(c); }
     public ASTree condition() { return child(0); }
     public ASTree thenBlock() { return child(1); }
     public ASTree elseBlock() {

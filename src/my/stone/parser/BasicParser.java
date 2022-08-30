@@ -26,18 +26,18 @@ public class BasicParser {
     Parser expr = expr0.expression(BinaryExpr.class, factor, operators);
 
     Parser statement0 = rule();
-    Parser block = rule(BlockStatement.class)
+    Parser block = rule(BlockStmt.class)
             .sep("{").option(statement0)
             .repeat(rule().sep(";", Token.EOL).option(statement0))
             .sep("}");
     Parser simple = rule(PrimaryExpr.class).ast(expr);
     Parser statement = statement0.or(
-            rule(IfStatement.class).sep("if").ast(expr).ast(block)
+            rule(IfStmt.class).sep("if").ast(expr).ast(block)
                     .option(rule().sep("else").ast(block)),
-            rule(WhileStatement.class).sep("while").ast(expr).ast(block),
+            rule(WhileStmt.class).sep("while").ast(expr).ast(block),
             simple);
 
-    Parser program = rule().or(statement, rule(NullStatement.class))
+    Parser program = rule().or(statement, rule(NullStmt.class))
             .sep(";", Token.EOL);
 
     public BasicParser() {
